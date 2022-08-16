@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  app:
+    image: 01092002/customer-service-banvien
+    container_name: customer-service
+    ports:
+      - "8888:8080"
+    depends_on:
+      - postgresqldb
+
+  postgresqldb:
+    container_name: customer-database
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=5071
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=CustomerManagement
