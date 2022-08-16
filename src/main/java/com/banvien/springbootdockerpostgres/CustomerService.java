@@ -1,6 +1,7 @@
 package com.banvien.springbootdockerpostgres;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class CustomerService {
     private final CustomerRepo repo;
 
+    @Cacheable(value = "customers")
     public List<Customer> findAll() {
         return repo.findAll();
     }
